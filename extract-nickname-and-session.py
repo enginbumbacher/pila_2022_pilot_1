@@ -27,25 +27,19 @@ def getNickname(text, filename):
 
 def getSession(text, filename):
     if "Pilot Session 1" in text:
-        return "Session 1"
+        return "1"
     elif '"Task 1: Intro Function"' in text:
         # this id is for a slide in the tutorial only found in session 2A
         if '199fe970-9d8e-11ec-82cb-6dbe8ad30586' in text:
-            return "Session 2A"
+            return "2A"
         else:
-            return "Session 2B"
+            return "2B"
     elif '"label":"Task 1: Intro Conditionals"' in text:
         # from session 3A, task 2
         if '"hint":"You can change the condition to test in the \'if\' bloc' in text:
-            return "Session 3A"
+            return "3A"
         else:
-            if '"hint":"' not in text:
-                print("NEVER MADE IT TO SECOND TASK!!!!!!!!!!!", filename)
-                shutil.move(
-                    sourceDirectory + '/' + filename,
-                    targetDirectory + '/' + filename
-                )
-            return "Session 3B"
+            return "3B"
 
 for filename in os.listdir(sourceDirectory):
     with open(os.path.join(sourceDirectory, filename), 'r') as f:
@@ -55,6 +49,7 @@ for filename in os.listdir(sourceDirectory):
             "nickname": getNickname(text, filename),
             "session": getSession(text, filename)
         }
+        print(entry['filename']+' '+entry['nickname']+' '+entry['session'])
         # if getNickname(text, filename) == None:
         #     withoutNicknames.append(filename)
         #     if '"op":"replace","path":"/anonymousId"' in text:
