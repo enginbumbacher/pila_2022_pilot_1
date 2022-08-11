@@ -1,7 +1,7 @@
 const fs = require('fs')
 const { analyzeInteractions } = require('./analyze_interactions')
 
-const directoryName = './process-pila-data/data/PILA-data/'
+const directoryName = './Users/p56739/Desktop/2022_SingaporeIreland/1_raw/interaction_03_08'
 const dir = fs.readdirSync(directoryName)
 
 const arrayEntryRowForEachTask = []
